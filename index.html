@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stranger Font Hub | Stylish Bio & Text</title>
+    <style>
+        :root { --accent: #ff007b; --bg: #000000; --card: #1a1a1a; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; padding: 15px; text-align: center; }
+        .container { max-width: 500px; margin: auto; }
+        
+        .ad-box { background: #333; height: 100px; margin: 20px 0; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #777; font-size: 12px; }
+
+        input { width: 90%; padding: 15px; border-radius: 10px; border: 2px solid var(--accent); background: #000; color: white; font-size: 18px; margin-bottom: 20px; outline: none; }
+        
+        .result-card { background: var(--card); padding: 15px; border-radius: 12px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; }
+        .font-text { font-size: 18px; overflow-x: auto; white-space: nowrap; margin-right: 10px; }
+        .copy-btn { background: var(--accent); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 12px; }
+
+        h1 { color: var(--accent); font-size: 2rem; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Stranger Fonts</h1>
+        <p>Instagram & WhatsApp ke liye stylish fonts</p>
+    </header>
+
+    <div class="ad-box">ADSTERRA AD CODE HERE</div>
+
+    <input type="text" id="userInput" placeholder="Yahan apna naam likhein..." oninput="generateFonts()">
+
+    <div id="results">
+        </div>
+
+    <div class="ad-box">ADSTERRA AD CODE HERE</div>
+</div>
+
+<script>
+    const fontStyles = {
+        "Bubble": (t) => t.split('').map(c => charMap.bubble[c] || c).join(''),
+        "Bold": (t) => t.split('').map(c => charMap.bold[c] || c).join(''),
+        "Italic": (t) => t.split('').map(c => charMap.italic[c] || c).join(''),
+        "Script": (t) => t.split('').map(c => charMap.script[c] || c).join(''),
+        "Square": (t) => t.split('').map(c => charMap.square[c] || c).join('')
+    };
+
+    const charMap = {
+        bubble: { 'a': 'ⓐ', 'b': 'ⓑ', 'c': 'ⓒ', 'd': 'ⓓ', 'e': 'ⓔ', 'f': 'ⓕ', 'g': 'ⓖ', 'h': 'ⓗ', 'i': 'ⓘ', 'j': 'ⓙ', 'k': 'ⓚ', 'l': 'ⓛ', 'm': 'ⓜ', 'n': 'ⓝ', 'o': 'ⓞ', 'p': 'ⓟ', 'q': 'ⓠ', 'r': 'ⓡ', 's': 'ⓢ', 't': 'ⓣ', 'u': 'ⓤ', 'v': 'ⓥ', 'w': 'ⓦ', 'x': 'ⓧ', 'y': 'ⓨ', 'z': 'ⓩ' },
+        bold: { 'a': '𝐚', 'b': '𝐛', 'c': '𝐜', 'd': '𝐝', 'e': '𝐞', 'f': '𝐟', 'g': '𝐠', 'h': '𝐡', 'i': '𝐢', 'j': '𝐣', 'k': '𝐤', 'l': '𝐥', 'm': '𝐦', 'n': '𝐧', 'o': '𝐨', 'p': '𝐩', 'q': '𝐪', 'r': '𝐫', 's': '𝐬', 't': '𝐭', 'u': '𝐮', 'v': '𝐯', 'w': '𝐰', 'x': '𝐱', 'y': '𝐲', 'z': '𝐳' },
+        italic: { 'a': '𝘢', 'b': '𝘣', 'c': '𝘤', 'd': '𝘥', 'e': '𝘦', 'f': '𝘧', 'g': '𝘨', 'h': '𝘩', 'i': '𝘪', 'j': '𝘫', 'k': '𝘬', 'l': '𝘭', 'm': '𝘮', 'n': '𝘯', 'o': '𝘰', 'p': '𝘱', 'q': '𝘲', 'r': '𝘳', 's': '𝘴', 't': '𝘵', 'u': '𝘶', 'v': '𝘷', 'w': '𝘸', 'x': '𝘹', 'y': '𝘺', 'z': '𝘻' },
+        script: { 'a': '𝒶', 'b': '𝒷', 'c': '𝒸', 'd': '𝒹', 'e': '𝑒', 'f': '𝒻', 'g': '𝑔', 'h': '𝒽', 'i': '𝒾', 'j': '𝒿', 'k': '𝓀', 'l': '𝓁', 'm': '𝓂', 'n': '𝓃', 'o': '𝑜', 'p': '𝓅', 'q': '𝓆', 'r': '𝓇', 's': '𝓈', 't': '𝓉', 'u': '𝓊', 'v': '𝓋', 'w': '𝓌', 'x': '𝓍', 'y': '𝓎', 'z': '𝓏' },
+        square: { 'a': '🄰', 'b': '🄱', 'c': '🄲', 'd': '🄳', 'e': '🄴', 'f': '🄵', 'g': '🄿', 'h': '🄷', 'i': '🄸', 'j': '🄹', 'k': '🄺', 'l': '🄻', 'm': '🄼', 'n': '🄽', 'o': '🄾', 'p': '🄿', 'q': '🅀', 'r': '🅁', 's': '🅂', 't': '🅃', 'u': '🅄', 'v': '🅅', 'w': '🅆', 'x': '🅇', 'y': '🅈', 'z': '🅉' }
+    };
+
+    function generateFonts() {
+        const input = document.getElementById('userInput').value.toLowerCase();
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = "";
+
+        if(input === "") return;
+
+        for (let style in fontStyles) {
+            const styledText = fontStyles[style](input);
+            const card = `
+                <div class="result-card">
+                    <span class="font-text" id="${style}">${styledText}</span>
+                    <button class="copy-btn" onclick="copyText('${style}')">Copy</button>
+                </div>`;
+            resultsDiv.innerHTML += card;
+        }
+    }
+
+    function copyText(id) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text);
+        alert("Copy ho gaya! Ab Instagram par paste karein.");
+    }
+</script>
+
+</body>
+</html>
+
